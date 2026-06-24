@@ -1,42 +1,31 @@
-# Garden.py - a simple gardening advice platform
+# Hardcoded values for the season and plant type
+season = "summer"  # TODO: Replace with input() to allow user interaction.
+plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
 
-# Get season and plant type from the user
-season = input("Enter the season: ").lower()
-plant_type = input("Enter the plant type: ").lower()
+# Variable to hold gardening advice
+advice = ""
 
-# Dictionary storing gardening advice
-season_advice = {
-    "summer": "Water your plants regularly and provide some shade.",
-    "winter": "Protect your plants from frost with covers."
-}
-
-plant_advice = {
-    "flower": "Use fertiliser to encourage blooms.",
-    "vegetable": "Keep an eye out for pests!"
-}
-
-# Function to generate gardening advice
-def get_advice(season, plant_type):
-    advice = ""
-
-    # Determine advice based on season
-    advice += season_advice.get(season, "No advice for this season.") + "\n"
-
-    # Determine advice based on plant type
-    advice += plant_advice.get(plant_type, "No advice for this type of plant.")
-
-    return advice
-
-# Recommend plants based on season
+# Determine advice based on the season
 if season == "summer":
-    recommendation = "Recommended plants: Sunflowers, Marigolds"
+    advice += "Water your plants regularly and provide some shade.\n"
 elif season == "winter":
-    recommendation = "Recommended plants: Pansies, Kale"
+    advice += "Protect your plants from frost with covers.\n"
 else:
-    recommendation = "No plant recommendations available."
+    advice += "No advice for this season.\n"
 
-# Print the generated advice and recommendations
-print("\nGardening Advice:")
-print(get_advice(season, plant_type))
+# Determine advice based on the plant type
+if plant_type == "flower":
+    advice += "Use fertiliser to encourage blooms."
+elif plant_type == "vegetable":
+    advice += "Keep an eye out for pests!"
+else:
+    advice += "No advice for this type of plant."
 
-print("\n" + recommendation)
+# Print the generated advice
+print(advice)
+
+# TODO: Examples of possible features to add:
+# - Add detailed comments explaining each block of code.
+# - Refactor the code into functions for better readability and modularity.
+# - Store advice in a dictionary for multiple plants and seasons.
+# - Recommend plants based on the entered season.
