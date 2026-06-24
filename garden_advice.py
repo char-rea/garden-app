@@ -1,31 +1,71 @@
-# Hardcoded values for the season and plant type
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
+"""
+garden_advice.py
+A gardening advice app that provides tips based on the current month and season.
+"""
 
-# Variable to hold gardening advice
-advice = ""
+import datetime
 
-# Determine advice based on the season
-if season == "summer":
-    advice += "Water your plants regularly and provide some shade.\n"
-elif season == "winter":
-    advice += "Protect your plants from frost with covers.\n"
-else:
-    advice += "No advice for this season.\n"
 
-# Determine advice based on the plant type
-if plant_type == "flower":
-    advice += "Use fertiliser to encourage blooms."
-elif plant_type == "vegetable":
-    advice += "Keep an eye out for pests!"
-else:
-    advice += "No advice for this type of plant."
+def get_current_month():
+    """Returns the name of the current month."""
+    return datetime.datetime.now().strftime("%B")
 
-# Print the generated advice
-print(advice)
 
-# TODO: Examples of possible features to add:
-# - Add detailed comments explaining each block of code.
-# - Refactor the code into functions for better readability and modularity.
-# - Store advice in a dictionary for multiple plants and seasons.
-# - Recommend plants based on the entered season.
+def get_season(month):
+    """Returns the season based on the given month name."""
+    spring = ["March", "April", "May"]
+    summer = ["June", "July", "August"]
+    autumn = ["September", "October", "November"]
+
+    if month in spring:
+        return "Spring"
+    elif month in summer:
+        return "Summer"
+    elif month in autumn:
+        return "Autumn"
+    else:
+        return "Winter"
+
+
+def get_monthly_tip(month):
+    """Returns a gardening tip for the given month."""
+    tips = {
+        "January": "Prune roses and plan your spring garden.",
+        "February": "Start seeds indoors for early spring planting.",
+        "March": "Begin planting cold-hardy vegetables.",
+        "April": "Plant flowers and start composting.",
+        "May": "Watch for pests and water regularly.",
+        "June": "Harvest early crops and deadhead flowers.",
+        "July": "Water deeply and mulch to retain moisture.",
+        "August": "Plant autumn crops like kale and broccoli.",
+        "September": "Collect seeds and prepare beds for winter.",
+        "October": "Plant bulbs for spring blooming.",
+        "November": "Protect tender plants from frost.",
+        "December": "Rest, plan, and order seed catalogues."
+    }
+    return tips.get(month, "No tip available.")
+
+
+def get_season_advice(season):
+    """Returns general advice based on the current season."""
+    advice = {
+        "Spring": "Great time to plant and fertilise.",
+        "Summer": "Focus on watering and pest control.",
+        "Autumn": "Harvest and prepare for cooler months.",
+        "Winter": "Plan next year's garden and rest the soil."
+    }
+    return advice.get(season, "No advice available.")
+
+
+def display_advice():
+    """Displays the current month's gardening tip and season advice."""
+    month = get_current_month()
+    season = get_season(month)
+    print(f"Month: {month}")
+    print(f"Tip: {get_monthly_tip(month)}")
+    print(f"Season: {season}")
+    print(f"Season Advice: {get_season_advice(season)}")
+
+
+# --- Main execution ---
+display_advice()
