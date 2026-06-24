@@ -1,18 +1,49 @@
 """
 garden_advice.py
-A gardening advice app that provides tips based on the current month and season.
+================
+A gardening advice application for enthusiasts around the world.
+
+This module provides:
+- Dynamic detection of the current month using Python's datetime module
+- Season detection based on the current month
+- Monthly gardening tips tailored to each month of the year
+- Season-based gardening advice
+
+Author: Charlotte Hill
+Last Updated: June 2026
 """
 
 import datetime
 
 
 def get_current_month():
-    """Returns the name of the current month."""
+    """
+    Detect and return the current month as a full month name.
+
+    Returns:
+        str: The full name of the current month (e.g., 'June').
+
+    Example:
+        >>> get_current_month()
+        'June'
+    """
     return datetime.datetime.now().strftime("%B")
 
 
 def get_season(month):
-    """Returns the season based on the given month name."""
+    """
+    Determine the season based on the provided month name.
+
+    Args:
+        month (str): The full name of a month (e.g., 'June').
+
+    Returns:
+        str: The season name — 'Spring', 'Summer', 'Autumn', or 'Winter'.
+
+    Example:
+        >>> get_season('June')
+        'Summer'
+    """
     spring = ["March", "April", "May"]
     summer = ["June", "July", "August"]
     autumn = ["September", "October", "November"]
@@ -28,7 +59,20 @@ def get_season(month):
 
 
 def get_monthly_tip(month):
-    """Returns a gardening tip for the given month."""
+    """
+    Retrieve a gardening tip for the specified month.
+
+    Args:
+        month (str): The full name of the month (e.g., 'June').
+
+    Returns:
+        str: A gardening tip relevant to the given month.
+             Returns 'No tip available.' if the month is not found.
+
+    Example:
+        >>> get_monthly_tip('June')
+        'Harvest early crops and deadhead flowers.'
+    """
     tips = {
         "January": "Prune roses and plan your spring garden.",
         "February": "Start seeds indoors for early spring planting.",
@@ -47,7 +91,20 @@ def get_monthly_tip(month):
 
 
 def get_season_advice(season):
-    """Returns general advice based on the current season."""
+    """
+    Retrieve general gardening advice for the specified season.
+
+    Args:
+        season (str): The name of the season (e.g., 'Summer').
+
+    Returns:
+        str: General advice relevant to the given season.
+             Returns 'No advice available.' if the season is not found.
+
+    Example:
+        >>> get_season_advice('Summer')
+        'Focus on watering and pest control.'
+    """
     advice = {
         "Spring": "Great time to plant and fertilise.",
         "Summer": "Focus on watering and pest control.",
@@ -58,7 +115,12 @@ def get_season_advice(season):
 
 
 def display_advice():
-    """Displays the current month's gardening tip and season advice."""
+    """
+    Display the current month's gardening tip and season advice.
+
+    Calls get_current_month() and get_season() to dynamically determine
+    the current month and season, then prints the relevant tip and advice.
+    """
     month = get_current_month()
     season = get_season(month)
     print(f"Month: {month}")
